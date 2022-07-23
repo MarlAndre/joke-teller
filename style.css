@@ -22,6 +22,10 @@ body {
   background-repeat: no-repeat;
 }
 
+.elements {
+  margin-top: 150px;
+}
+
 button {
   cursor: pointer;
   outline: none;
