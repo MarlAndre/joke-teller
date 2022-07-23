@@ -105,6 +105,11 @@ const VoiceRSS = {
   },
 };
 
+// Disabled/Enabled button
+function toggleButton() {
+  button.disabled = !button.disabled;
+}
+
 // Passing Joke to VoiceRSS API
 function tellMe(joke) {
   VoiceRSS.speech({
@@ -133,12 +138,16 @@ async function getJokes() {
     } else {
       joke = data.joke;
     }
+    // Text-to-Speech
     tellMe(joke);
+    // Disable button
+    toggleButton();
   } catch (error) {
     // Catch Error here
-    console.log("whoops", error);
+    console.log("Catching error :)", error);
   }
 }
 
-// On load
-getJokes();
+// Add event listeners
+button.addEventListener("click", getJokes);
+audioElement.addEventListener("ended", toggleButton);
